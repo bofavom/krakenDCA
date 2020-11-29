@@ -1,0 +1,23 @@
+{
+  "name": "krakendca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "kraken.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bofavom/krakenDCA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bofavom/krakenDCA/issues"
+  },
+  "homepage": "https://github.com/bofavom/krakenDCA#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "kraken-api": "^1.0.1"
+  }
+}
