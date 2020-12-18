@@ -1,4 +1,3 @@
-const fs = require('fs');
 require('dotenv').config();
 
 const key = process.env.API_KEY; // API Key
@@ -9,6 +8,11 @@ const kraken = new KrakenClient(key, secret);
 let tries = 1;
 let isFinished = false;
 const maxTries = 10;
+
+const currentDate = new Date();
+currentDate.setMonth(currentDate.getMonth() + 1);
+currentDate.setDate(0);
+const daysInCurrentMonth = currentDate.getDate();
 
 const getDate = () => {
 	const dateInstance = new Date();
@@ -30,7 +34,9 @@ const sleep = (ms) => {
 
     await kraken.api('Ticker', { pair: 'XXBTZEUR' })
       .then(async (res) => {
-        const QUANTITY_EUR = Number(process.env.BUY_AMOUNT);
+        const BUY_AMOUNT = Number(process.env.BUY_AMOUNT);
+        const QUANTITY_EUR = BUY_AMOUNT / daysInCurrentMonth;
+
         const PRICE = res['result']['XXBTZEUR']['c'][0];
         const QUANTITY_BTC = Number((QUANTITY_EUR / PRICE).toFixed(8));
 
